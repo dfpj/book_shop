@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ order.get_total_price }}
+
+    <a href="{% url 'order:request' order.id %}" class="btn btn-primary">Pay</a>
+{% endblock %}

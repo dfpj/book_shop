@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Size</th>
+            <th scope="col">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            {% for book in books reversed %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.size }}</td>
+                    <td>{{ book.price }}</td>
+
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <th scope="row"></th>
+                <td>Total</td>
+                <td></td>
+                <td> {{ total_price }}</td>
+            </tr>
+
+    </table>
+
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'order:create' %}" class="btn btn-primary">CheckOut</a>
+    {% else %}
+        <p>for checkout order please login or register</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+     {% include 'pageination.html' %}
+    <div class="container" >
+        <div class="row">
+            <div class="col">
+                {% for book in page_obj|slice:'0::3' %}
+                    {% include 'book_item.html' %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                {% for book in page_obj|slice:'1::3' %}
+                    {% include 'book_item.html' %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                 {% for book in page_obj|slice:'2::3' %}
+                    {% include 'book_item.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% include 'pageination.html' %}
+{% endblock %}
